@@ -59,7 +59,7 @@ const OnboardingPage = () => {
 
           {/* Header */}
           <div className="text-center mb-20">
-            <h2 className="font-serif text-4xl lg:text-5xl font-bold text-[#242424] mb-6">
+            <h2 className="font-serif text-3xl lg:text-4xl font-bold text-[#242424] mb-6">
               A Simple Process Designed for Your Practice
             </h2>
             <p className="text-[#6f6c66] text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
@@ -90,7 +90,7 @@ const OnboardingPage = () => {
 
                   {/* Content */}
                   <div className="flex-1 bg-white/60 backdrop-blur-sm p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 group-hover:translate-x-2">
-                    <h3 className="text-2xl lg:text-3xl font-semibold text-[#242424] mb-3 font-serif">
+                    <h3 className="text-2xl lg:text-xl font-semibold text-[#242424] mb-3 font-serif">
                       {step.title}
                     </h3>
                     <p className="text-[#6f6c66] text-base sm:text-lg leading-relaxed">
