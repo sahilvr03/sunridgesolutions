@@ -90,7 +90,7 @@ export default function AboutPage() {
           <p className="text-lg text-[#7a7974] mb-6">
             We understand the administrative challenges of modern medicine because we see them every day through our own family of physicians.
           </p>
-          <p className="text-[#7a7974] text-lg leading-relaxed">
+          <p className="text-[#141414] text-lg leading-relaxed">
             Our commitment to healthcare is rooted in a deep, personal understanding of the medical profession. With several physicians in our immediate and extended family, we have a front-row seat to the daily challenges that providers face—from increasing documentation requirements to the complexities of payer reimbursements.
             <br /><br />
             We believe that a healthy revenue cycle is the lifeblood of a successful practice. Our mission is to handle the high-stakes financial operations of your business so you can focus on what matters most: your patients. We bring a level of care and integrity to our work that can only come from a team that truly values the work of the provider.

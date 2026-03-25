@@ -121,24 +121,13 @@ export default function ContactPage() {
                       href="tel:+12033689932"
                       className="text-[#cfa109] hover:underline"
                     >
-                      203-368-9932
+                      (203) 368-9932
                     </a>
                     <p className="text-sm text-[#807e78]">Mon-Fri 9am-6pm EST</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center">
-                    <MapPin className="h-5 w-5 text-[#D4AF37]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-[#242424]">Visit Us</h3>
-                    <p className="text-[#807e78]">
-                      123 Business Avenue, Suite 500 <br />
-                      New York, NY 10001
-                    </p>
-                  </div>
-                </div>
+               
               </div>
             </div>
 
