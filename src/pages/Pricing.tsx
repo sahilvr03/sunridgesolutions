@@ -62,7 +62,7 @@ export default function PricingPage() {
             Transparent Pricing
           </h1>
 
-          <p className="font-serif text-white/80 text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="font-serif text-white/80 text-xl leading-relaxed max-w-2xl mx-auto">
             Flexible engagement models designed to fit every practice size and specialty.
           </p>
 

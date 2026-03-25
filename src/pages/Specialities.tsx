@@ -86,7 +86,7 @@ export default function SpecialtiesPage() {
           <h1 className="font-serif text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
             Healthcare Specialties We Support
           </h1>
-          <p className="font-serif text-white/80 text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="font-serif text-white/80 text-xl leading-relaxed max-w-2xl mx-auto">
             Sunnyridge Solutions works with a wide range of healthcare
             specialties, providing tailored billing and revenue cycle
             management services designed to maximize reimbursements.

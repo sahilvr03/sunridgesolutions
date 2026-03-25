@@ -58,7 +58,7 @@ export default function HowItWorksPage() {
             How We Deliver Results
           </h1>
 
-          <p className="font-serif text-white/80 text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="font-serif text-white/80 text-xl leading-relaxed max-w-2xl mx-auto">
             Sunnyridge Solutions provides trusted medical billing and management
             services designed to support healthcare practices across the United
             States. Our streamlined onboarding ensures smooth transitions and

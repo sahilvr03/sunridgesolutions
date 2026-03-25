@@ -13,7 +13,7 @@ export default function AboutPage() {
             <br />
             A Lifetime of Technical Precision
           </h1>
-          <p className="font-serif text-white/80 text-lg">
+          <p className="font-serif text-white/80 text-xl">
             Merging 15 years of multi-state billing expertise with 30 years of enterprise data engineering and largest Payer experience
           </p>
         </div>

@@ -109,7 +109,7 @@ export default function TechnologyPage() {
             Compliances
           </h1>
 
-          <p className="font-serif text-white/80 text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="font-serif text-white/80 text-xl leading-relaxed max-w-2xl mx-auto">
             Enterprise-grade security, healthcare compliance, and powerful
             integrations built for modern medical billing systems.
           </p>

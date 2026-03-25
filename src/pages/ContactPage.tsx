@@ -69,7 +69,7 @@ export default function ContactPage() {
           <h1 className="font-serif text-white text-4xl md:text-5xl font-bold mb-4">
             Let's Strengthen Your Practice Together
           </h1>
-          <p className="font-serif text-white/80 text-lg max-w-2xl mx-auto">
+          <p className="font-serif text-white/80 text-xl max-w-2xl mx-auto">
             Request your no-obligation revenue audit below.
           </p>
         </div>

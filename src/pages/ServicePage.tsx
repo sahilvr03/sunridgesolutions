@@ -28,7 +28,7 @@ export default function ServicesPage() {
           <h1 className="font-serif text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
             Comprehensive Solutions for the Modern Practice
           </h1>
-          <p className="font-serif text-white/80 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="font-serif text-white/80 text-base sm:text-xl leading-relaxed max-w-2xl mx-auto">
             From the first patient appointment to the final payment, we manage every detail of your revenue cycle.
           </p>
         </div>
