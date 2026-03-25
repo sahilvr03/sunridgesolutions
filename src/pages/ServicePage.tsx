@@ -9,38 +9,35 @@ import {
   Receipt,
   Presentation,
   RefreshCw,
+  Target,
+  Shield,
+  FastForward,
+  Search,
 } from "lucide-react";
 
 export default function ServicesPage() {
   return (
     <div className="bg-gradient-to-br from-[#fff0dc] to-[#ebdbc4]">
+      {/* HERO */}
       <section className="relative w-full min-h-[35vh] flex items-center overflow-hidden">
-
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[#5E503F]"></div>
         </div>
 
         <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
-
           <h1 className="font-serif text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
-                          Comprehensive Solutions for the Modern Practice
-
+            Comprehensive Solutions for the Modern Practice
           </h1>
-
-          <p className="font-serif text-white/80 text-lg leading-relaxed max-w-2xl mx-auto">
-              From the first patient appointment to the final payment, we manage every detail of your revenue cycle.
+          <p className="font-serif text-white/80 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+            From the first patient appointment to the final payment, we manage every detail of your revenue cycle.
           </p>
-
         </div>
       </section>
+
       {/* ================= CORE SERVICES (6 GRID) ================= */}
-      <section className="py-24 ">
+      <section className="py-24">
         <div className="container-wide">
-
-
-
           <div className="grid md:grid-cols-3 gap-8">
-
             {[
               {
                 title: "Credentialing & Provider Enrollment",
@@ -87,113 +84,114 @@ export default function ServicesPage() {
                 </div>
               );
             })}
-
           </div>
 
-          <p className="text-center text-[#807e78] mt-10">
-            All services are tailored to the unique coding requirements of over 40+ medical specialties.
+          <p className="text-center text-[#807e78] mt-12 text-sm">
+            All services are tailored to the unique coding requirements of over 40+ medical and dental specialties.
           </p>
-
         </div>
       </section>
 
       {/* ================= SERVICE STANDARDS (2x2 GRID) ================= */}
       <section className="py-20 bg-[#f8f6f2]">
-        <div className="container-wide grid md:grid-cols-2 gap-8">
+        <div className="container-wide">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <h2 className="font-serif text-3xl lg:text-4xl font-bold text-[#242424] mb-5">
+              Our Service Standards
+            </h2>
+          </div>
 
-          {[
-            {
-              title: "Clinical Accuracy",
-              icon: CheckCircle2,
-              desc: "Precision is the foundation of a healthy revenue cycle. We perform rigorous \"claim scrubbing\" before submission to ensure every code is accurate and every modifier is correct, leading to a 98%+ clean claim rate from day one.",
-            },
-            {
-              title: "Rigorous Compliance",
-              icon: ShieldCheck,
-              desc: "Navigate the complexities of healthcare regulations with confidence. Our services are fully HIPAA-compliant, and our team stays ahead of evolving ICD-10, CPT, and payer-specific requirements to protect your practice from audits and liability.",
-            },
-            {
-              title: "Accelerated Turnaround",
-              icon: Clock,
-              desc: "We turn \"pending\" into \"paid.\" By submitting claims within 24–48 hours of service and aggressively following up on unpaid accounts, we significantly reduce your Days in A/R and provide a predictable, steady cash flow.",
-            },
-            {
-              title: "Actionable Analytics",
-              icon: BarChart3,
-              desc: "Knowledge is power. Gain total transparency into your practice’s financial health with detailed monthly reports and real-time dashboards. We don’t just provide data; we provide insights that help you make informed business decisions.",
-            },
-          ].map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={index}
-                className="bg-white border border-[#e7e3da] rounded-xl p-8 shadow-sm"
-              >
-                <Icon className="w-10 h-10 text-[#cfa109] mb-4" />
-                <h3 className="font-serif text-xl font-semibold text-[#242424] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-[#807e78]">{item.desc}</p>
-              </div>
-            );
-          })}
-
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Clinical Accuracy",
+                icon: Target,
+                desc: "Precision is the foundation of a healthy revenue cycle. We perform rigorous \"claim scrubbing\" before submission to ensure every code is accurate and every modifier is correct, leading to a 98%+ clean claim rate from day one.",
+              },
+              {
+                title: "Rigorous Compliance",
+                icon: Shield,
+                desc: "Navigate the complexities of healthcare regulations with confidence. Our services are fully HIPAA-compliant, and our team stays ahead of evolving ICD-10, CPT, and payer-specific requirements to protect your practice from audits and liability.",
+              },
+              {
+                title: "Accelerated Turnaround",
+                icon: FastForward,
+                desc: "We turn \"pending\" into \"paid.\" By submitting claims within 24–48 hours of service and aggressively following up on unpaid accounts, we significantly reduce your Days in A/R and provide a predictable, steady cash flow.",
+              },
+              {
+                title: "Actionable Analytics",
+                icon: Search,
+                desc: "Knowledge is power. Gain total transparency into your practice's financial health with detailed monthly reports and real-time dashboards. We don't just provide data; we provide insights that help you make informed business decisions.",
+              },
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-white border border-[#e7e3da] rounded-xl p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+                >
+                  <Icon className="w-10 h-10 text-[#cfa109] mb-4" />
+                  <h3 className="font-serif text-xl font-semibold text-[#242424] mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-[#807e78] leading-relaxed">{item.desc}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
       {/* ================= WHY PARTNER (SIDE BY SIDE) ================= */}
-<section className="">
-  <div className="container-wide grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-24">
+        <div className="container-wide grid lg:grid-cols-2 gap-16 items-center">
+          {/* Image */}
+          <div className="rounded-xl overflow-hidden">
+            <img
+              src="/pti.png"
+              alt="Why Partner With Us"
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-    {/* Image */}
-    <div className="min-w-96 rounded-xl overflow-hidden">
-      <img
-        src="/pti.png"
-        alt="Why Partner With Us"
-        className="w-full h-full object-cover"
-      />
-    </div>
+          <div className="space-y-8">
+            <h2 className="font-serif text-4xl font-bold text-[#242424]">
+              Why Partner With Us?
+            </h2>
 
-    <div className="space-y-6">
-      <h2 className="font-serif text-4xl font-bold text-[#242424]">
-        Why Partner With Us?
-      </h2>
-
-      {[
-        {
-          title: "Real-Time Financial Transparency",
-          desc: "Never wonder about the status of your claims again. You retain 24/7 access to your data and financial dashboards. We believe in an \"open books\" partnership where you see exactly what we see, from initial submission to final payment.",
-        },
-        {
-          title: "Reduced Administrative Burden",
-          desc: "Burnout is a reality in modern medicine. By offloading the complex and time-consuming tasks of insurance follow-ups and denial management to us, you and your staff can reclaim your time and refocus entirely on patient care.",
-        },
-        {
-          title: "Optimized Cash Flow",
-          desc: "We don't just \"process\" bills; we manage revenue. Our proactive approach minimizes \"Days in A/R\" and ensures that your practice’s financial health is as robust as the clinical care you provide. We turn outstanding accounts into consistent, predictable revenue.",
-        },
-      ].map((item, i) => (
-        <div key={i}>
-          <h3 className="font-serif text-xl font-semibold text-[#242424] mb-2">
-            {item.title}
-          </h3>
-          <p className="text-[#807e78]">{item.desc}</p>
+            {[
+              {
+                title: "Real-Time Financial Transparency",
+                desc: "Never wonder about the status of your claims again. You retain 24/7 access to your data and financial dashboards. We believe in an \"open books\" partnership where you see exactly what we see, from initial submission to final payment.",
+              },
+              {
+                title: "Reduced Administrative Burden",
+                desc: "Burnout is a reality in modern medicine. By offloading the complex and time-consuming tasks of insurance follow-ups and denial management to us, you and your staff can reclaim your time and refocus entirely on patient care.",
+              },
+              {
+                title: "Optimized Cash Flow",
+                desc: "We don't just \"process\" bills; we manage revenue. Our proactive approach minimizes \"Days in A/R\" and ensures that your practice's financial health is as robust as the clinical care you provide. We turn outstanding accounts into consistent, predictable revenue.",
+              },
+            ].map((item, i) => (
+              <div key={i}>
+                <h3 className="font-serif text-xl font-semibold text-[#242424] mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-[#807e78] leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-
-  </div>
-</section>
+      </section>
 
       {/* ================= HEALTHCARE EXPERTISE ================= */}
       <section className="py-24 bg-[#f8f6f2]">
         <div className="container-wide grid lg:grid-cols-2 gap-16">
-
           <div>
             <h2 className="font-serif text-4xl font-bold text-[#242424] mb-4">
               We Speak Your Language
             </h2>
-            <p className="text-[#807e78] text-lg">
+            <p className="text-[#807e78] text-lg leading-relaxed">
               Our team understands the healthcare workflows, clinical documentation, and payer rules that directly impact your bottom line.
             </p>
           </div>
@@ -206,7 +204,7 @@ export default function ServicesPage() {
               },
               {
                 title: "Complex Case Management",
-                desc: "We don’t shy away from difficult claims. Our team specializes in navigating high-complexity cases and persistent denials that other billing companies often overlook.",
+                desc: "We don't shy away from difficult claims. Our team specializes in navigating high-complexity cases and persistent denials that other billing companies often overlook.",
               },
               {
                 title: "Government Payer Mastery",
@@ -217,33 +215,31 @@ export default function ServicesPage() {
                 desc: "The medical world never stands still. We undergo regular training on ICD-10 and CPT updates to ensure your practice is always ahead of regulatory changes and payer policy shifts.",
               },
             ].map((item, i) => (
-              <div key={i} className="bg-white border border-[#e7e3da] rounded-xl p-6">
-                <h3 className="font-serif font-semibold text-[#242424] mb-2">
+              <div
+                key={i}
+                className="bg-white border border-[#e7e3da] rounded-xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+              >
+                <h3 className="font-serif text-lg font-semibold text-[#242424] mb-2">
                   {item.title}
                 </h3>
-                <p className="text-[#807e78]">{item.desc}</p>
+                <p className="text-[#807e78] leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* ================= TECHNOLOGY ================= */}
+      {/* ================= TECHNOLOGY & PAYER ADVANTAGE ================= */}
       <section className="py-24">
         <div className="container-wide max-w-4xl mx-auto text-center">
-
-          <h2 className="font-serif text-4xl font-bold text-[#242424] mb-4">
+          <h2 className="font-serif text-3xl font-bold text-[#242424] mb-4">
             Enterprise-Grade Technology. Insider Payer Knowledge.
           </h2>
-
-          <p className="text-[#807e78] text-lg">
+          <p className="text-[#807e78] text-lg leading-relaxed">
             Highlighting our 15 years of experience at the nation's largest payer and familiarity with adjudication and EDI feeds.
           </p>
-
         </div>
       </section>
-
     </div>
   );
 }

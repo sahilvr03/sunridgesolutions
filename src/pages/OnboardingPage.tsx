@@ -35,52 +35,64 @@ const steps = [
 
 const OnboardingPage = () => {
   return (
-    <div className="bg-gradient-to-br from-[#fff0dc]  to-[#ebdbc4]">
-              <section className="relative w-full min-h-[35vh] flex items-center overflow-hidden ">
-
+    <div className="bg-gradient-to-br from-[#fff0dc] to-[#ebdbc4]">
+      {/* Hero Section */}
+      <section className="relative w-full min-h-[35vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-        
-
           <div className="absolute inset-0 bg-[#5E503F]"></div>
         </div>
 
         <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
-
           <h1 className="font-serif text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
             A Streamlined Onboarding Process
           </h1>
-
-          <p className="font-serif text-white/80 text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="font-serif text-white/80 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
             Designed to minimize disruption and maximize results from day one.
-
           </p>
-
         </div>
       </section>
-      {/* Hero / Intro */}
-      
 
-      {/* Steps */}
-      <div className="space-y-12 py-16 px-20">
-        {steps.map((step) => (
-          <div key={step.number} className="flex flex-col lg:flex-row items-start lg:items-center gap-6">
-            {/* Numeral */}
-            <div className="flex-shrink-0 text-gray-700  text-4xl font-bold lg:text-5xl">
-              {step.number}
-            </div>
-
-            {/* Content */}
-            <div>
-              <h3 className="text-2xl lg:text-3xl font-semibold text-gray-900 mb-2">
-                {step.title}
-              </h3>
-              <p className="text-gray-700">{step.description}</p>
-            </div>
+      {/* Main Content */}
+      <section className="py-20">
+        <div className="container-wide max-w-4xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-3xl lg:text-4xl font-bold text-[#242424] mb-4">
+              A Simple Process Designed for Your Practice
+            </h2>
+            <p className="text-[#807e78] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+              We minimize disruption to your daily operations while maximizing your financial results from day one.
+            </p>
           </div>
-        ))}
-      </div>
 
-     
+          {/* Steps List */}
+          <div className="space-y-12">
+            {steps.map((step) => (
+              <div
+                key={step.number}
+                className="flex flex-col lg:flex-row items-start gap-6 group"
+              >
+                {/* Numeral */}
+                <div className="flex-shrink-0 w-20">
+                  <span className="text-5xl lg:text-6xl font-bold text-[#5E8B7E] opacity-70 group-hover:opacity-100 transition-opacity">
+                    {step.number}
+                  </span>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1">
+                  <h3 className="text-xl lg:text-2xl font-semibold text-[#242424] mb-3 font-serif">
+                    {step.title}
+                  </h3>
+                  <p className="text-[#807e78] leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
