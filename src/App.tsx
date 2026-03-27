@@ -18,6 +18,7 @@ import HowItWorksPage from "./pages/HowItWorkpage";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import OnboardingPage from "@/pages/OnboardingPage";
+import FAQPage from "@/pages/FAQs";
 
 const queryClient = new QueryClient();
 
@@ -94,6 +95,12 @@ const App = () => (
           <Route path="/services" element={
   <PageLayout>
     <ServicePage />
+  </PageLayout>
+} />  
+
+<Route path="/faqs" element={
+  <PageLayout>
+    <FAQPage />
   </PageLayout>
 } />
           <Route path="*" element={<NotFound />} />

@@ -3,54 +3,93 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-} from "lucide-react";
-
-const faqs = [
-  {
-    question: "Which EHR/EMR systems do you work with?",
-    answer:
-      "We are system-agnostic and have experience integrating with most major platforms. Our team works within your existing software to ensure a seamless transition and data continuity.",
-  },
-  {
-    question: "How do you handle denied or rejected claims?",
-    answer:
-      "We take a proactive approach. Every denial is analyzed, corrected, and resubmitted within 24–48 hours. We also track denial patterns to help your front-desk staff reduce errors at the point of entry.",
-  },
-  {
-    question: "Is my patient data secure and HIPAA-compliant?",
-    answer:
-      "Absolutely. Security is our top priority. We utilize bank-grade encryption and follow strict HIPAA protocols to ensure all Protected Health Information (PHI) is handled with complete confidentiality.",
-  },
-  {
-    question: "How soon can we expect to see results?",
-    answer:
-      "While every practice is different, most clients see a noticeable reduction in their Days in A/R and an increase in clean-claim rates within the first 60 to 90 days of our partnership.",
-  },
-];
+import { Mail, Phone, Send } from "lucide-react";
 
 export default function ContactPage() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    message: "",
+  });
+
+  // ✅ Name Validation (ONLY alphabets, no number start, no digits)
+  const validateName = (name: string) => {
+    return /^[A-Za-z][A-Za-z\s]*$/.test(name);
+  };
+
+  // ✅ Email Validation
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  // ✅ Word Count Function
+  const getWordCount = (text: string) => {
+    return text.trim().split(/\s+/).filter(Boolean).length;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // 🔴 First Name Validation
+    if (!validateName(form.firstName)) {
+      return toast({
+        title: "Invalid First Name",
+        description: "First name should only contain letters and not start with a number.",
+      });
+    }
+
+    // 🔴 Last Name Validation
+    if (!validateName(form.lastName)) {
+      return toast({
+        title: "Invalid Last Name",
+        description: "Last name should only contain letters and not start with a number.",
+      });
+    }
+
+    // 🔴 Email Validation
+    if (!validateEmail(form.email)) {
+      return toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+      });
+    }
+
+    // 🔴 Message Empty Check
+    if (!form.message.trim()) {
+      return toast({
+        title: "Message Required",
+        description: "Please enter details about your project.",
+      });
+    }
+
+    // 🔴 450 Words Limit
+    if (getWordCount(form.message) > 450) {
+      return toast({
+        title: "Message Too Long",
+        description: "Maximum 450 words allowed.",
+      });
+    }
+
     setIsSubmitting(true);
 
+    // 👉 EMAIL API CALL HERE
     setTimeout(() => {
       toast({
         title: "Message sent!",
-        description: "We'll get back to you within 24 hours.",
+        description: "We'll get back to you soon.",
+      });
+
+      setForm({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        message: "",
       });
 
       setIsSubmitting(false);
@@ -59,150 +98,113 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fff0dc] to-[#ebdbc4]">
+      
       {/* HERO */}
-      <section className="relative w-full min-h-[35vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[#5E503F]" />
-        </div>
-
-        <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
-          <h1 className="font-serif text-white text-4xl md:text-5xl font-bold mb-4">
-            Let's Strengthen Your Practice Together
-          </h1>
-          <p className="font-serif text-white/80 text-xl max-w-2xl mx-auto">
-            Request your no-obligation revenue audit below.
-          </p>
-        </div>
+      <section className="bg-[#5E503F] py-20 text-center text-white">
+        <h1 className="text-4xl font-bold mb-4">
+          Let's Strengthen Your Practice Together
+        </h1>
+        <p className="text-white/80">
+          Request your no-obligation revenue audit below.
+        </p>
       </section>
 
-      {/* CONTACT & FAQ SECTION */}
-      <section className="py-24">
-        <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* LEFT SIDE - CONTACT INFO */}
-            <div>
-              <span className="inline-flex items-center px-6 py-2 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#cfa109] text-sm font-serif font-semibold uppercase tracking-wider mb-6">
-                Get In Touch
-              </span>
+      {/* MAIN */}
+      <section className="py-20">
+        <div className="container-wide grid lg:grid-cols-2 gap-16">
 
-              <h2 className="font-serif text-4xl font-bold text-[#242424] mb-6">
-                We're Here to Help
-              </h2>
+          {/* LEFT */}
+          <div>
+            <h2 className="text-3xl font-bold mb-6">We're Here to Help</h2>
 
-              <p className="font-serif text-[#807e78] text-lg mb-10">
-                Whether you have questions about our services or want to explore
-                how we can help your organization, we'd love to hear from you.
-              </p>
+            <p className="text-[#807e78] mb-10">
+              Whether you have questions or want to explore collaboration,
+              we’d love to hear from you.
+            </p>
 
-              {/* CONTACT DETAILS */}
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center">
-                    <Mail className="h-5 w-5 text-[#D4AF37]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-[#242424]">Email Us</h3>
-                    <a
-                      href="mailto:contact@sunnyridgesolutions.com"
-                      className="text-[#cfa109] hover:underline"
-                    >
-                      contact@sunnyridgesolutions.com
-                    </a>
-                  </div>
-                </div>
+            <div className="space-y-6">
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center">
-                    <Phone className="h-5 w-5 text-[#D4AF37]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-[#242424]">Call Us</h3>
-                    <a
-                      href="tel:+12033689932"
-                      className="text-[#cfa109] hover:underline"
-                    >
-                      (203) 368-9932
-                    </a>
-                    <p className="text-sm text-[#807e78]">Mon-Fri 9am-6pm EST</p>
-                  </div>
-                </div>
-
-               
-              </div>
-            </div>
-
-            {/* RIGHT SIDE - FORM & FAQ */}
-            <div>
-              {/* CONTACT FORM */}
-              <div className="bg-white/70 backdrop-blur rounded-2xl p-8 shadow-xl border border-white/40">
-                <h3 className="font-serif text-2xl font-bold text-[#242424] mb-6">
-                  Send Us a Message
-                </h3>
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <Input placeholder="First Name" required />
-                    <Input placeholder="Last Name" required />
-                  </div>
-                  <Input type="email" placeholder="Email Address" required />
-                  <Input placeholder="Company Name" />
-                  <Textarea
-                    placeholder="Tell us about your project..."
-                    rows={5}
-                    required
-                  />
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full bg-[#D4AF37] hover:bg-[#b8962e] text-black font-semibold"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                    <Send className="ml-2 h-4 w-4" />
-                  </Button>
-                </form>
+              <div className="flex items-center gap-4">
+                <Mail className="text-[#D4AF37]" />
+                <a
+                  href="mailto:contact@sunnyridgesolutions.com"
+                  className="text-black text-lg font-semibold"
+                >
+                  contact@sunnyridgesolutions.com
+                </a>
               </div>
 
-              {/* FAQ SECTION */}
-              <div className="mt-16">
-                <div className="text-center max-w-2xl mx-auto mb-10">
-                  <h3 className="font-serif text-3xl font-bold text-[#242424] mb-4">
-                    Common Questions
-                  </h3>
-                  <p className="text-[#807e78]">
-                    Everything you need to know about partnering with us for your RCM.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  {faqs.map((faq, index) => (
-                    <div
-                      key={index}
-                      className="bg-white/80 backdrop-blur rounded-xl shadow-sm border border-[#e7e3da] overflow-hidden"
-                    >
-                      <button
-                        onClick={() => toggleFAQ(index)}
-                        className="w-full text-left p-5 flex justify-between items-center hover:bg-[#f8f6f2] transition-colors"
-                      >
-                        <span className="font-semibold text-[#242424]">
-                          {faq.question}
-                        </span>
-                        <span className="text-[#cfa109] text-xl font-medium">
-                          {openIndex === index ? "−" : "+"}
-                        </span>
-                      </button>
-
-                      {openIndex === index && (
-                        <div className="px-5 pb-5 text-[#807e78] leading-relaxed border-t border-[#e7e3da] pt-4">
-                          {faq.answer}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
+              <div className="flex items-center gap-4">
+                <Phone className="text-[#D4AF37]" />
+                <a
+                  href="tel:+12033689932"
+                  className="text-black text-lg font-semibold"
+                >
+                  (203) 368-9932
+                </a>
               </div>
+
             </div>
           </div>
+
+          {/* RIGHT */}
+          <div className="bg-white p-8 rounded-xl shadow">
+            <h3 className="text-xl font-bold mb-6">Send Us a Message</h3>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <Input
+                  value={form.firstName}
+                  placeholder="First Name"
+                  required
+                  onChange={(e) =>
+                    setForm({ ...form, firstName: e.target.value })
+                  }
+                />
+                <Input
+                  value={form.lastName}
+                  placeholder="Last Name"
+                  required
+                  onChange={(e) =>
+                    setForm({ ...form, lastName: e.target.value })
+                  }
+                />
+              </div>
+
+              <Input
+                value={form.email}
+                type="email"
+                placeholder="Email"
+                required
+                onChange={(e) =>
+                  setForm({ ...form, email: e.target.value })
+                }
+              />
+
+              <Input
+                value={form.company}
+                placeholder="Company"
+                onChange={(e) =>
+                  setForm({ ...form, company: e.target.value })
+                }
+              />
+
+              <Textarea
+                value={form.message}
+                placeholder="Tell us about your project (max 450 words)"
+                required
+                onChange={(e) =>
+                  setForm({ ...form, message: e.target.value })
+                }
+              />
+
+              <Button className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send Message"}
+                <Send className="ml-2 h-4 w-4" />
+              </Button>
+            </form>
+          </div>
+
         </div>
       </section>
     </div>

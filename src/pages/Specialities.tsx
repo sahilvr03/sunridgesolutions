@@ -100,13 +100,13 @@ export default function SpecialtiesPage() {
 
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span
+            {/* <span
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full
               bg-secondary/50 border border-accent/30
               text-accent text-sm font-serif font-semibold uppercase tracking-wider mb-6"
             >
               Our Expertise
-            </span>
+            </span> */}
             <h2 className="font-serif text-4xl font-bold text-[#242424] mb-6">
               Medical Specialties
             </h2>

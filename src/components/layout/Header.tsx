@@ -10,6 +10,7 @@ const companyLinks = [
   { title: "Technology", href: "/technology" },
   { title: "Pricing", href: "/pricing" },
   { title: "Contact", href: "/contact" },
+  { title: "FAQs", href: "/faqs" },
 ];
 
 export function Header() {

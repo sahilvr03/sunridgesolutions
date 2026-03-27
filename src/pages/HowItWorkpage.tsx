@@ -78,12 +78,7 @@ export default function HowItWorksPage() {
 
           <div className="text-center max-w-3xl mx-auto mb-16">
 
-            <span className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full 
-            bg-secondary/50 border border-accent/30 
-            text-accent text-sm font-serif font-semibold uppercase tracking-wider mb-6">
-              Simple Process
-            </span>
-
+          
             <h2 className="font-serif text-4xl lg:text-5xl font-bold text-[#242424] mb-6">
               How It Works
             </h2>

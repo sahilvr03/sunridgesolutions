@@ -143,47 +143,51 @@ export default function ServicesPage() {
       </section>
 
       {/* ================= WHY PARTNER (SIDE BY SIDE) ================= */}
-      <section className="py-24">
-        <div className="container-wide grid lg:grid-cols-2 gap-16 items-center">
-          {/* Image */}
-          <div className="rounded-xl overflow-hidden">
-            <img
-              src="/pti.png"
-              alt="Why Partner With Us"
-              className="w-full h-full object-cover"
-            />
-          </div>
+<section className="py-24">
+  <div className="container-wide max-w-5xl mx-auto">
 
-          <div className="space-y-8">
-            <h2 className="font-serif text-4xl font-bold text-[#242424]">
-              Why Partner With Us?
-            </h2>
+    {/* Heading Centered */}
+    <div className="text-center mb-16">
+      <h2 className="font-serif text-4xl font-bold text-[#242424] mb-4">
+        Why Partner With Us?
+      </h2>
+      <p className="text-[#807e78] max-w-2xl mx-auto">
+        We combine transparency, efficiency, and expertise to help your practice grow sustainably.
+      </p>
+    </div>
 
-            {[
-              {
-                title: "Real-Time Financial Transparency",
-                desc: "Never wonder about the status of your claims again. You retain 24/7 access to your data and financial dashboards. We believe in an \"open books\" partnership where you see exactly what we see, from initial submission to final payment.",
-              },
-              {
-                title: "Reduced Administrative Burden",
-                desc: "Burnout is a reality in modern medicine. By offloading the complex and time-consuming tasks of insurance follow-ups and denial management to us, you and your staff can reclaim your time and refocus entirely on patient care.",
-              },
-              {
-                title: "Optimized Cash Flow",
-                desc: "We don't just \"process\" bills; we manage revenue. Our proactive approach minimizes \"Days in A/R\" and ensures that your practice's financial health is as robust as the clinical care you provide. We turn outstanding accounts into consistent, predictable revenue.",
-              },
-            ].map((item, i) => (
-              <div key={i}>
-                <h3 className="font-serif text-xl font-semibold text-[#242424] mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-[#807e78] leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
+    {/* Content Spread */}
+    <div className="grid md:grid-cols-2 gap-12">
+      {[
+        {
+          title: "Real-Time Financial Transparency",
+          desc: "Never wonder about the status of your claims again. You retain 24/7 access to your data and financial dashboards. We believe in an \"open books\" partnership where you see exactly what we see, from initial submission to final payment.",
+        },
+        {
+          title: "Reduced Administrative Burden",
+          desc: "Burnout is a reality in modern medicine. By offloading the complex and time-consuming tasks of insurance follow-ups and denial management to us, you and your staff can reclaim your time and refocus entirely on patient care.",
+        },
+        {
+          title: "Optimized Cash Flow",
+          desc: "We don't just \"process\" bills; we manage revenue. Our proactive approach minimizes \"Days in A/R\" and ensures that your practice's financial health is as robust as the clinical care you provide. We turn outstanding accounts into consistent, predictable revenue.",
+        },
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="bg-white/70 backdrop-blur rounded-xl p-6 shadow-sm border border-[#e7e3da]"
+        >
+          <h3 className="font-serif text-xl font-semibold text-[#242424] mb-3">
+            {item.title}
+          </h3>
+          <p className="text-[#807e78] leading-relaxed">
+            {item.desc}
+          </p>
         </div>
-      </section>
+      ))}
+    </div>
 
+  </div>
+</section>
       {/* ================= HEALTHCARE EXPERTISE ================= */}
       <section className="py-24 bg-[#f8f6f2]">
         <div className="container-wide grid lg:grid-cols-2 gap-16">
