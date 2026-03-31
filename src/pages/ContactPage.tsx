@@ -17,88 +17,128 @@ export default function ContactPage() {
     message: "",
   });
 
-  // ✅ Name Validation (ONLY alphabets, no number start, no digits)
-  const validateName = (name: string) => {
-    return /^[A-Za-z][A-Za-z\s]*$/.test(name);
+  const [errors, setErrors] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  });
+
+  const MAX_WORDS = 450;
+
+  const validateName = (name: string) =>
+    /^[A-Za-z][A-Za-z\s]*$/.test(name.trim());
+
+  const validateEmail = (email: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const getWordCount = (text: string) =>
+    text.trim() === "" ? 0 : text.trim().split(/\s+/).filter(Boolean).length;
+
+  const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const value = e.target.value;
+    const wordCount = getWordCount(value);
+
+    if (wordCount > MAX_WORDS) {
+      // Trim to 450 words
+      const trimmed = value.trim().split(/\s+/).slice(0, MAX_WORDS).join(" ");
+      setForm({ ...form, message: trimmed });
+      setErrors((prev) => ({
+        ...prev,
+        message: `Maximum ${MAX_WORDS} words reached.`,
+      }));
+    } else {
+      setForm({ ...form, message: value });
+      setErrors((prev) => ({ ...prev, message: "" }));
+    }
   };
 
-  // ✅ Email Validation
-  const validateEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
-
-  // ✅ Word Count Function
-  const getWordCount = (text: string) => {
-    return text.trim().split(/\s+/).filter(Boolean).length;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // 🔴 First Name Validation
-    if (!validateName(form.firstName)) {
-      return toast({
-        title: "Invalid First Name",
-        description: "First name should only contain letters and not start with a number.",
-      });
+    const newErrors = { firstName: "", lastName: "", email: "", message: "" };
+    let hasError = false;
+
+    if (!form.firstName.trim()) {
+      newErrors.firstName = "First name is required.";
+      hasError = true;
+    } else if (!validateName(form.firstName)) {
+      newErrors.firstName =
+        "First name must start with a letter and contain only letters.";
+      hasError = true;
     }
 
-    // 🔴 Last Name Validation
-    if (!validateName(form.lastName)) {
-      return toast({
-        title: "Invalid Last Name",
-        description: "Last name should only contain letters and not start with a number.",
-      });
+    if (!form.lastName.trim()) {
+      newErrors.lastName = "Last name is required.";
+      hasError = true;
+    } else if (!validateName(form.lastName)) {
+      newErrors.lastName =
+        "Last name must start with a letter and contain only letters.";
+      hasError = true;
     }
 
-    // 🔴 Email Validation
-    if (!validateEmail(form.email)) {
-      return toast({
-        title: "Invalid Email",
-        description: "Please enter a valid email address.",
-      });
+    if (!form.email.trim()) {
+      newErrors.email = "Email is required.";
+      hasError = true;
+    } else if (!validateEmail(form.email)) {
+      newErrors.email = "Please enter a valid email address.";
+      hasError = true;
     }
 
-    // 🔴 Message Empty Check
     if (!form.message.trim()) {
-      return toast({
-        title: "Message Required",
-        description: "Please enter details about your project.",
-      });
+      newErrors.message = "Please tell us about your project.";
+      hasError = true;
+    } else if (getWordCount(form.message) > MAX_WORDS) {
+      newErrors.message = `Message must be ${MAX_WORDS} words or fewer.`;
+      hasError = true;
     }
 
-    // 🔴 450 Words Limit
-    if (getWordCount(form.message) > 450) {
-      return toast({
-        title: "Message Too Long",
-        description: "Maximum 450 words allowed.",
-      });
-    }
+    setErrors(newErrors);
+    if (hasError) return;
 
     setIsSubmitting(true);
 
-    // 👉 EMAIL API CALL HERE
-    setTimeout(() => {
+    try {
+      const res = await fetch("http://localhost:5000/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you soon.",
+        });
+        setForm({
+          firstName: "",
+          lastName: "",
+          email: "",
+          company: "",
+          message: "",
+        });
+        setErrors({ firstName: "", lastName: "", email: "", message: "" });
+      } else {
+        throw new Error(data.error);
+      }
+    } catch {
       toast({
-        title: "Message sent!",
-        description: "We'll get back to you soon.",
+        title: "Error",
+        description: "Failed to send message. Please try again.",
       });
+    }
 
-      setForm({
-        firstName: "",
-        lastName: "",
-        email: "",
-        company: "",
-        message: "",
-      });
-
-      setIsSubmitting(false);
-    }, 1000);
+    setIsSubmitting(false);
   };
+
+  const wordCount = getWordCount(form.message);
+  const isNearLimit = wordCount >= MAX_WORDS - 20;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fff0dc] to-[#ebdbc4]">
-      
+
       {/* HERO */}
       <section className="bg-[#5E503F] py-20 text-center text-white">
         <h1 className="text-4xl font-bold mb-4">
@@ -114,7 +154,7 @@ export default function ContactPage() {
         <div className="container-wide grid lg:grid-cols-2 gap-16">
 
           {/* LEFT */}
-          <div>
+         <div>
             <h2 className="text-3xl font-bold mb-6">We're Here to Help</h2>
 
             <p className="text-[#807e78] mb-10">
@@ -152,35 +192,54 @@ export default function ContactPage() {
             <h3 className="text-xl font-bold mb-6">Send Us a Message</h3>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+
+              {/* First + Last Name */}
               <div className="grid grid-cols-2 gap-4">
-                <Input
-                  value={form.firstName}
-                  placeholder="First Name"
-                  required
-                  onChange={(e) =>
-                    setForm({ ...form, firstName: e.target.value })
-                  }
-                />
-                <Input
-                  value={form.lastName}
-                  placeholder="Last Name"
-                  required
-                  onChange={(e) =>
-                    setForm({ ...form, lastName: e.target.value })
-                  }
-                />
+                <div className="flex flex-col gap-1">
+                  <Input
+                    value={form.firstName}
+                    placeholder="First Name"
+                    onChange={(e) =>
+                      setForm({ ...form, firstName: e.target.value })
+                    }
+                    className={errors.firstName ? "border-red-500" : ""}
+                  />
+                  {errors.firstName && (
+                    <p className="text-xs text-red-500">{errors.firstName}</p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-1">
+                  <Input
+                    value={form.lastName}
+                    placeholder="Last Name"
+                    onChange={(e) =>
+                      setForm({ ...form, lastName: e.target.value })
+                    }
+                    className={errors.lastName ? "border-red-500" : ""}
+                  />
+                  {errors.lastName && (
+                    <p className="text-xs text-red-500">{errors.lastName}</p>
+                  )}
+                </div>
               </div>
 
-              <Input
-                value={form.email}
-                type="email"
-                placeholder="Email"
-                required
-                onChange={(e) =>
-                  setForm({ ...form, email: e.target.value })
-                }
-              />
+              {/* Email */}
+              <div className="flex flex-col gap-1">
+                <Input
+                  value={form.email}
+                  type="email"
+                  placeholder="Email"
+                  onChange={(e) =>
+                    setForm({ ...form, email: e.target.value })
+                  }
+                  className={errors.email ? "border-red-500" : ""}
+                />
+                {errors.email && (
+                  <p className="text-xs text-red-500">{errors.email}</p>
+                )}
+              </div>
 
+              {/* Company (no validation needed) */}
               <Input
                 value={form.company}
                 placeholder="Company"
@@ -189,19 +248,40 @@ export default function ContactPage() {
                 }
               />
 
-              <Textarea
-                value={form.message}
-                placeholder="Tell us about your project (max 450 words)"
-                required
-                onChange={(e) =>
-                  setForm({ ...form, message: e.target.value })
-                }
-              />
+              {/* Message with word counter */}
+              <div className="flex flex-col gap-1">
+                <Textarea
+                  value={form.message}
+                  placeholder="Tell us about your project (max 450 words)"
+                  rows={5}
+                  onChange={handleMessageChange}
+                  className={errors.message ? "border-red-500" : ""}
+                />
+                <div className="flex justify-between items-center">
+                  {errors.message ? (
+                    <p className="text-xs text-red-500">{errors.message}</p>
+                  ) : (
+                    <span />
+                  )}
+                  <p
+                    className={`text-xs ml-auto ${
+                      wordCount >= MAX_WORDS
+                        ? "text-red-500 font-medium"
+                        : isNearLimit
+                        ? "text-amber-500"
+                        : "text-gray-400"
+                    }`}
+                  >
+                    {wordCount} / {MAX_WORDS} words
+                  </p>
+                </div>
+              </div>
 
               <Button className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? "Sending..." : "Send Message"}
                 <Send className="ml-2 h-4 w-4" />
               </Button>
+
             </form>
           </div>
 

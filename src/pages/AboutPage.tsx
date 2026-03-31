@@ -20,9 +20,9 @@ export default function AboutPage() {
       </section>
 
       {/* SECTION 1: OUR STORY */}
-      <section className="py-24">
+      <section className="py-14">
         <div className="container-wide max-w-5xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-8">
             <h1 className="font-serif text-3xl lg:text-4xl font-bold text-[#242424] mb-2">
               OUR STORY
             </h1>
@@ -45,7 +45,7 @@ export default function AboutPage() {
       </section>
 
       {/* SECTION 2: LEADERSHIP PROFILE */}
-      <section className="py-20 bg-[#f8f6f2]">
+      <section className="py-14 bg-[#f8f6f2]">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <h2 className="font-serif text-3xl lg:text-4xl font-bold text-[#242424] mb-5">
@@ -82,7 +82,7 @@ export default function AboutPage() {
       </section>
 
       {/* SECTION 3: OUR PHILOSOPHY */}
-      <section className="py-24">
+      <section className="py-14">
         <div className="container-wide max-w-4xl mx-auto text-center">
           <h2 className="font-serif text-4xl font-bold text-[#242424] mb-4">
             A Provider-First Perspective

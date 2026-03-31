@@ -23,7 +23,7 @@ const benefits = [
 
 export function KeyBenefits() {
   return (
-    <section className="py-20">
+    <section className="py-8">
       <div className="container-wide">
         {/* Heading - reduced space */}
         <div className="text-center max-w-3xl mx-auto mb-8">

@@ -95,11 +95,11 @@ export default function SpecialtiesPage() {
       </section>
 
       {/* SPECIALTIES */}
-      <section className="py-24">
+      <section className="py-14">
         <div className="container-wide">
 
           {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-8">
             {/* <span
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full
               bg-secondary/50 border border-accent/30

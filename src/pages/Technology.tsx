@@ -119,7 +119,7 @@ export default function TechnologyPage() {
 
       {/* CONTENT */}
 
-      <section className="py-24">
+      <section className="py-14">
         <div className="container-wide">
 
           {/* Header */}

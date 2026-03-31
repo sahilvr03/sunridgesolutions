@@ -23,10 +23,10 @@ const benefits = [
 
 export default function HowWeDeliver() {
   return (
-    <section className="w-full py-20">
+    <section className="w-full py-14">
       <div className="container-wide">
         {/* Heading - reduced gap and single line */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <h2 className="font-serif text-3xl lg:text-4xl font-bold text-[#242424] mb-5">
             Strategic Solutions for Financial Health
           </h2>

@@ -25,36 +25,37 @@ export function Footer() {
             </Link>
 
             {/* ✅ ONE LINE TEXT */}
-            <p className="text-[#F5F0F6]/80 max-w-md font-serif">
-              Your trusted partner for healthcare operational excellence. We deliver measurable and reliable revenue cycle solutions.
-            </p>
-
+<p className="text-[#F5F0F6]/80 max-w-full font-serif whitespace-nowrap text-sm md:text-lg">
+  Your trusted partner for healthcare operational excellence. We deliver measurable and reliable revenue cycle solutions.
+</p>
             {/* ✅ CONTACT BELOW TAGLINE */}
-            <div className="space-y-2 pt-2">
-              <div className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-[#D7B377]" />
-                <a
-                  href="mailto:contact@sunnyridgesolutions.com"
-                  className="text-white text-lg font-semibold"
-                >
-                  contact@sunnyridgesolutions.com
-                </a>
-              </div>
+<div className="flex flex-wrap md:flex-nowrap items-center gap-6 pt-2 whitespace-nowrap">
+  
+  <div className="flex items-center gap-2">
+    <Mail className="h-5 w-5 text-[#D7B377]" />
+    <a
+      href="mailto:contact@sunnyridgesolutions.com"
+      className="text-white text-sm md:text-lg font-semibold"
+    >
+      contact@sunnyridgesolutions.com
+    </a>
+  </div>
 
-              <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-[#D7B377]" />
-                <a
-                  href="tel:+12033689932"
-                  className="text-white text-lg font-semibold"
-                >
-                  (203) 368-9932
-                </a>
-              </div>
-            </div>
+  <div className="flex items-center gap-2">
+    <Phone className="h-5 w-5 text-[#D7B377]" />
+    <a
+      href="tel:+12033689932"
+      className="text-white text-sm md:text-lg font-semibold"
+    >
+      (203) 368-9932
+    </a>
+  </div>
+
+</div>
           </div>
 
           {/* RIGHT EMPTY SPACE (maintained layout balance) */}
-          <div></div>
+        
         </div>
 
         {/* LINKS */}

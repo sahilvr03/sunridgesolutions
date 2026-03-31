@@ -28,7 +28,7 @@ export function Header() {
   }, [mobileMenuOpen]);
 
   const navItemClass =
-    "text-sm font-semibold text-[#8B6508] hover:text-[#5f4000] transition-colors duration-300";
+    "text-sm font-semibold text-[#5E503F] hover:text-[#5f4000] transition-colors duration-300";
 
   const handleNavClick = (path: string) => {
     if (path.includes("#")) {
@@ -63,7 +63,7 @@ export function Header() {
         {/* Logo */}
         <button onClick={() => handleNavClick("/")} className="flex items-center gap-3">
           <img src="/logo.png" alt="Sunnyridge Solutions Logo" className="h-12 w-auto" />
-          <span className="font-serif font-bold text-xl lg:text-2xl bg-gradient-to-r from-[#d49c00] via-[#D4AF37] to-[#8B6508] bg-clip-text text-transparent">
+          <span className="font-serif font-bold text-xl lg:text-2xl bg-[#5E503F] bg-clip-text text-transparent">
             Sunnyridge Solutions
           </span>
         </button>

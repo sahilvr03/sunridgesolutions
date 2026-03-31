@@ -54,11 +54,11 @@ const OnboardingPage = () => {
       </section>
 
       {/* Main Section */}
-      <section className="py-24 lg:py-32">
+      <section className="py-14 lg:py-16">
         <div className="max-w-5xl mx-auto px-6">
 
           {/* Header */}
-          <div className="text-center mb-20">
+          <div className="text-center mb-12">
             <h2 className="font-serif text-3xl lg:text-4xl font-bold text-[#242424] mb-6">
               A Simple Process Designed for Your Practice
             </h2>

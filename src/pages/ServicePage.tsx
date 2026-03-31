@@ -93,9 +93,9 @@ export default function ServicesPage() {
       </section>
 
       {/* ================= SERVICE STANDARDS (2x2 GRID) ================= */}
-      <section className="py-20 bg-[#f8f6f2]">
+      <section className="py-14 bg-[#f8f6f2]">
         <div className="container-wide">
-          <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="text-center max-w-3xl mx-auto mb-10">
             <h2 className="font-serif text-3xl lg:text-4xl font-bold text-[#242424] mb-5">
               Our Service Standards
             </h2>
@@ -143,12 +143,12 @@ export default function ServicesPage() {
       </section>
 
       {/* ================= WHY PARTNER (SIDE BY SIDE) ================= */}
-<section className="py-24">
+<section className="py-14">
   <div className="container-wide max-w-5xl mx-auto">
 
     {/* Heading Centered */}
-    <div className="text-center mb-16">
-      <h2 className="font-serif text-4xl font-bold text-[#242424] mb-4">
+    <div className="text-center mb-10">
+      <h2 className="font-serif text-4xl font-bold text-[#242424] mb-2">
         Why Partner With Us?
       </h2>
       <p className="text-[#807e78] max-w-2xl mx-auto">

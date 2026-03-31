@@ -87,7 +87,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ================= SERVICE STANDARDS (2x2 GRID) ================= */}
-      <section className="py-20 bg-[#f8f6f2]">
+      <section className="py-14 bg-[#f8f6f2]">
         <div className="container-wide grid md:grid-cols-2 gap-8">
 
           {[
@@ -131,7 +131,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ================= WHY PARTNER (SIDE BY SIDE) ================= */}
-      <section className="py-24">
+      <section className="py-10">
         <div className="container-wide grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Image Placeholder */}
@@ -169,7 +169,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ================= HEALTHCARE EXPERTISE ================= */}
-      <section className="py-24 bg-[#f8f6f2]">
+      <section className="py-14 bg-[#f8f6f2]">
         <div className="container-wide grid lg:grid-cols-2 gap-16">
 
           <div>
@@ -213,7 +213,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ================= TECHNOLOGY ================= */}
-      <section className="py-24">
+      <section className="py-14">
         <div className="container-wide max-w-4xl mx-auto text-center">
 
           <h2 className="font-serif text-4xl font-bold text-[#242424] mb-4">
