@@ -117,7 +117,7 @@ export function Header() {
                   <button
                     key={link.title}
                     onClick={() => handleNavClick(link.href)}
-                    className="block w-full text-left px-4 py-2 text-sm text-[#8B6508] hover:bg-gray-50 hover:text-[#5f4000] transition-colors"
+                    className="block w-full text-left px-4 py-2 text-sm text-[#5E503F] hover:bg-gray-50 hover:text-[#5f4000] transition-colors"
                   >
                     {link.title}
                   </button>

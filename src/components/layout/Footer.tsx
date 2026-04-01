@@ -25,7 +25,7 @@ export function Footer() {
             </Link>
 
             {/* ✅ ONE LINE TEXT */}
-<p className="text-[#F5F0F6]/80 max-w-full font-serif whitespace-nowrap text-sm md:text-lg">
+<p className="text-[#F5F0F6]/80 max-w-full font-serif text-sm md:text-lg whitespace-normal md:whitespace-nowrap">
   Your trusted partner for healthcare operational excellence. We deliver measurable and reliable revenue cycle solutions.
 </p>
             {/* ✅ CONTACT BELOW TAGLINE */}
